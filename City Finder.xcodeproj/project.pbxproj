@@ -18,6 +18,8 @@
 		42890AB321596CEB007F228A /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42890AB221596CEB007F228A /* City.swift */; };
 		42890AB921597319007F228A /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42890AB721597319007F228A /* Trie.swift */; };
 		42890ABA21597319007F228A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42890AB821597319007F228A /* MapViewController.swift */; };
+		42890AC4215979F2007F228A /* TestDictionary.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42890AC3215979F2007F228A /* TestDictionary.txt */; };
+		42890AC621597A78007F228A /* TestDictionary.txt in Resources */ = {isa = PBXBuildFile; fileRef = 42890AC3215979F2007F228A /* TestDictionary.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 		42890AB221596CEB007F228A /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		42890AB721597319007F228A /* Trie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
 		42890AB821597319007F228A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		42890AC3215979F2007F228A /* TestDictionary.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TestDictionary.txt; path = "../../../../../../Downloads/Trie 3/Trie/TestDictionary.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,7 @@
 		42890A9421596B24007F228A /* City FinderTests */ = {
 			isa = PBXGroup;
 			children = (
+				42890AC3215979F2007F228A /* TestDictionary.txt */,
 				42890A9521596B24007F228A /* City_FinderTests.swift */,
 				42890A9721596B24007F228A /* Info.plist */,
 			);
@@ -292,6 +296,7 @@
 				42890AB121596C46007F228A /* cities.json in Resources */,
 				42890A8B21596B24007F228A /* LaunchScreen.storyboard in Resources */,
 				42890A8821596B24007F228A /* Assets.xcassets in Resources */,
+				42890AC621597A78007F228A /* TestDictionary.txt in Resources */,
 				42890A8621596B22007F228A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42890AC4215979F2007F228A /* TestDictionary.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +541,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UR4F29DJ73;
 				INFOPLIST_FILE = "City FinderTests/Info.plist";
@@ -545,6 +552,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Attiamo.City-FinderTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/City Finder.app/City Finder";
@@ -556,6 +564,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UR4F29DJ73;
 				INFOPLIST_FILE = "City FinderTests/Info.plist";
