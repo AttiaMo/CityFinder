@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uBE-DH-y0d">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cities-->
+        <scene sceneID="WZA-wv-9hA">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" title="Cities" id="zfd-66-SOA" customClass="CityListViewController" customModule="City_Finder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n8I-8m-Kp5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bIx-Zd-qmG">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CityCell" id="DaF-d3-urP">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DaF-d3-urP" id="hrm-ZZ-7qR">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="zfd-66-SOA" id="XRU-r9-DG6"/>
+                                    <outlet property="delegate" destination="zfd-66-SOA" id="gnW-pX-tEt"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" placeholder="Find your city" translatesAutoresizingMaskIntoConstraints="NO" id="w3i-OO-G43">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zfd-66-SOA" id="JM1-go-kia"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="bIx-Zd-qmG" secondAttribute="bottom" id="KXU-Bx-0G2"/>
+                            <constraint firstItem="bIx-Zd-qmG" firstAttribute="top" secondItem="w3i-OO-G43" secondAttribute="bottom" id="S9e-Pg-MhA"/>
+                            <constraint firstItem="bIx-Zd-qmG" firstAttribute="leading" secondItem="l79-ku-agT" secondAttribute="leading" id="Vo5-MT-4gf"/>
+                            <constraint firstItem="w3i-OO-G43" firstAttribute="top" secondItem="l79-ku-agT" secondAttribute="top" id="Yfi-KU-eQ7"/>
+                            <constraint firstItem="w3i-OO-G43" firstAttribute="leading" secondItem="l79-ku-agT" secondAttribute="leading" id="iv7-vX-xHP"/>
+                            <constraint firstItem="l79-ku-agT" firstAttribute="trailing" secondItem="bIx-Zd-qmG" secondAttribute="trailing" id="n5M-fm-lx6"/>
+                            <constraint firstItem="w3i-OO-G43" firstAttribute="trailing" secondItem="l79-ku-agT" secondAttribute="trailing" id="xow-xD-U9b"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="l79-ku-agT"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Find the city" id="KrN-Tv-rBU">
+                        <barButtonItem key="backBarButtonItem" title=" " id="l4b-Yu-Vt0"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="w3i-OO-G43" id="sv0-ot-0aT"/>
+                        <outlet property="searchDisplayController" destination="EpJ-0y-ETz" id="qhA-q1-ZYC"/>
+                        <outlet property="tableView" destination="bIx-Zd-qmG" id="Txq-Jn-FMh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z0f-6a-n6N" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="EpJ-0y-ETz">
+                    <connections>
+                        <outlet property="delegate" destination="zfd-66-SOA" id="3o4-xz-pdd"/>
+                        <outlet property="searchContentsController" destination="zfd-66-SOA" id="geq-Eq-Ry0"/>
+                        <outlet property="searchResultsDataSource" destination="zfd-66-SOA" id="Egm-JI-0AM"/>
+                        <outlet property="searchResultsDelegate" destination="zfd-66-SOA" id="r19-QH-5wE"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="958" y="138"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oa9-Ok-MSV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uBE-DH-y0d" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bHE-WF-I5Z">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zfd-66-SOA" kind="relationship" relationship="rootViewController" id="r8L-rH-BhL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FEH-AP-L7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="250" y="144"/>
+        </scene>
+    </scenes>
+</document>
