@@ -12,13 +12,18 @@ class CityListViewController: UIViewController {
     
     @IBOutlet var tableView:UITableView!
     @IBOutlet var searchBar:UISearchBar!
-    lazy var filteredCities = [City]()
-    lazy var seperator = "=="
-    var sortedCities = [City]()
+    fileprivate var citiesStringsArray = [String]()
+    fileprivate var sortedCities = [City]()
+    
+    fileprivate lazy var filteredCities = [String]()
+    fileprivate lazy var seperator = "=="
+    
+    fileprivate var citiesTrie = Trie()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        sortedCities = loadJson(filename: "cities")
+        bindData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,9 +31,15 @@ class CityListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func fetchData(){
-        sortedCities = loadJson(filename: "cities")
-        filteredCities = sortedCities
+    /// Inserts words into a trie.  If the trie is non-empty, don't do anything.
+    private func bindData() {
+        for index in 0...sortedCities.count-1{
+            let city = sortedCities[index]
+            let text = String(format: "\(city.name ?? ""),\(city.country ?? "")\(self.seperator)\(index)")
+            citiesStringsArray.append(text)
+            citiesTrie.insert(word: text)
+        }
+        filteredCities = citiesStringsArray
         self.tableView.reloadData()
     }
     
@@ -70,13 +81,28 @@ extension CityListViewController: UISearchBarDelegate{
     
     private func filterContentForSearchText(_ searchText: String) {
         if searchText == "" {
-            filteredCities = sortedCities
+            self.filteredCities = self.citiesStringsArray
+            self.reloadTable()
         }else{
-            filteredCities = (sortedCities.filter({( city : City) -> Bool in
-                return city.name?.lowercased().contains(searchText.lowercased()) ?? false
-            }))
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                //Filter data in search in tries in background to avoid lagging in UI
+                self.filteredCities = self.citiesTrie.findWordsWithPrefix(prefix: searchText)
+                
+                DispatchQueue.main.async { [weak self] in
+                    //Bind new filtered data to table in main queue
+                    self?.reloadTable()
+                }
+            }
         }
-        self.tableView.reloadData()
+    }
+    
+    private func reloadTable(){
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
 }
 // MARK: - TableView
@@ -89,7 +115,15 @@ extension CityListViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
-        cell.textLabel?.text = "\(filteredCities[indexPath.row].name ?? ""),\(filteredCities[indexPath.row].country ?? "")"
+        cell.textLabel?.text = filteredCities[indexPath.row].components(separatedBy: seperator)[0]
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        let city = sortedCities[Int(filteredCities[indexPath.row].components(separatedBy: seperator)[1]) ?? 0]
+        vc.city = city
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

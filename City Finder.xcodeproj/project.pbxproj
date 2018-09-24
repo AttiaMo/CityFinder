@@ -16,6 +16,8 @@
 		42890AAF21596C0A007F228A /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42890AAE21596C0A007F228A /* CityListViewController.swift */; };
 		42890AB121596C46007F228A /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 42890AB021596C46007F228A /* cities.json */; };
 		42890AB321596CEB007F228A /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42890AB221596CEB007F228A /* City.swift */; };
+		42890AB921597319007F228A /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42890AB721597319007F228A /* Trie.swift */; };
+		42890ABA21597319007F228A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42890AB821597319007F228A /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		42890AAE21596C0A007F228A /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
 		42890AB021596C46007F228A /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		42890AB221596CEB007F228A /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		42890AB721597319007F228A /* Trie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
+		42890AB821597319007F228A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +107,10 @@
 			children = (
 				42890AB62159715B007F228A /* Configuration */,
 				42890AB521597146007F228A /* Resources */,
-				42890AB42159712B007F228A /* Cities list */,
+				42890A8921596B24007F228A /* LaunchScreen.storyboard */,
+				42890A8421596B22007F228A /* Main.storyboard */,
+				42890ABB2159732F007F228A /* Helpers */,
+				42890ABD21597356007F228A /* Features */,
 			);
 			path = "City Finder";
 			sourceTree = "<group>";
@@ -129,8 +136,6 @@
 		42890AB42159712B007F228A /* Cities list */ = {
 			isa = PBXGroup;
 			children = (
-				42890A8921596B24007F228A /* LaunchScreen.storyboard */,
-				42890A8421596B22007F228A /* Main.storyboard */,
 				42890AAE21596C0A007F228A /* CityListViewController.swift */,
 				42890AB221596CEB007F228A /* City.swift */,
 			);
@@ -153,6 +158,31 @@
 				42890A8021596B22007F228A /* AppDelegate.swift */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		42890ABB2159732F007F228A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				42890AB721597319007F228A /* Trie.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		42890ABC2159733D007F228A /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				42890AB821597319007F228A /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		42890ABD21597356007F228A /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				42890AB42159712B007F228A /* Cities list */,
+				42890ABC2159733D007F228A /* Map */,
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +318,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				42890A8121596B22007F228A /* AppDelegate.swift in Sources */,
+				42890AB921597319007F228A /* Trie.swift in Sources */,
 				42890AAF21596C0A007F228A /* CityListViewController.swift in Sources */,
+				42890ABA21597319007F228A /* MapViewController.swift in Sources */,
 				42890AB321596CEB007F228A /* City.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
