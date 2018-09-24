@@ -13,11 +13,11 @@ import  MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet var mapView: MKMapView!
-    var coordinates: CLLocationCoordinate2D?
     var city:City?
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpMapViewStyle()
+        self.title = city?.name ?? ""
     }
     
     override func didReceiveMemoryWarning() {
@@ -25,7 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func dropPins() {
+    private func dropPins() {
         //Remove pins and add the new ones 
         mapView.removeAnnotations(mapView.annotations)
         
@@ -45,13 +45,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.delegate = self
         self.mapView.showsCompass = true
         self.mapView.showsBuildings = true
-        
         dropPins()
     }
 
     // MARK: MapView Delegate
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
         let identifier = "cityPin"
         if annotation.isKind(of: MKUserLocation.self){
             return nil
